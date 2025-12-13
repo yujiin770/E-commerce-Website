@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Boutiques · Chrono</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="product.css" rel="stylesheet" />
+    
+    <style>
+      /* Page Specific Styles */
+      .boutique-hero {
+        position: relative;
+        height: 50vh;
+        width: 100%;
+        background-image: url('img/8.jpg'); /* Using existing asset */
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .boutique-overlay {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.7);
+        z-index: 1;
+      }
+      .search-container {
+        position: relative;
+        z-index: 2;
+        max-width: 600px;
+        width: 100%;
+      }
+      
+      /* Luxury Input Field */
+      .form-control-luxury {
+        background-color: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.2);
+        color: white;
+        padding: 15px 20px;
+        backdrop-filter: blur(5px);
+      }
+      .form-control-luxury:focus {
+        background-color: rgba(255,255,255,0.2);
+        border-color: var(--rolex-gold);
+        box-shadow: none;
+        color: white;
+      }
+      .form-control-luxury::placeholder {
+        color: rgba(255,255,255,0.6);
+      }
+
+      /* Store Cards */
+      .boutique-card {
+        background-color: var(--rolex-gray);
+        border: 1px solid rgba(255,255,255,0.05);
+        transition: all 0.4s ease;
+        height: 100%;
+      }
+      .boutique-card:hover {
+        border-color: var(--rolex-green);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
+      .boutique-img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+      
+      /* Animations */
+      .reveal-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s ease;
+      }
+      .reveal-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Icons -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="crown" viewBox="0 0 16 16"><path d="M8 0l2 5 4-2-1 6H3l-1-6 4 2 2-5z" fill="currentColor"/></symbol>
+      <symbol id="geo" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" fill="currentColor"/></symbol>
+      <symbol id="cart" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path></symbol>
+    </svg>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md fixed-top border-bottom border-secondary border-opacity-25" data-bs-theme="dark" style="background-color: rgba(0,0,0,0.85); backdrop-filter: blur(10px);">
+      <div class="container">
+        <a class="navbar-brand d-md-none text-uppercase fw-bold" href="index.html">
+          <svg class="bi me-2" width="24" height="24"><use xlink:href="#crown"></use></svg>
+          Chrono
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvas">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav flex-grow-1 justify-content-between text-uppercase small fw-semibold ls-1 align-items-center">
+              <li class="nav-item">
+                <a class="nav-link text-warning" href="index.html">
+                  <svg class="bi" width="24" height="24"><use xlink:href="#crown"></use></svg>
+                </a>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="watches.html">Watches</a></li>
+              <li class="nav-item"><a class="nav-link" href="new-models.html">New Models</a></li>
+              <li class="nav-item"><a class="nav-link" href="craftsmanship.html">Craftsmanship</a></li>
+              <li class="nav-item"><a class="nav-link" href="world-of.html">World Of</a></li>
+              <!-- ACTIVE PAGE -->
+              <li class="nav-item"><a class="nav-link text-white active" href="boutiques.html">Boutiques</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <svg class="bi" width="20" height="20"><use xlink:href="#cart"></use></svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero / Search Section -->
+      <section class="boutique-hero">
+        <div class="boutique-overlay"></div>
+        <div class="container search-container text-center reveal-up">
+            <h1 class="display-4 font-serif text-white mb-4">Find a Boutique</h1>
+            <p class="lead text-white-50 mb-4">Official Chrono Retailers provide expert guidance on the purchase and care of your watch.</p>
+            
+            <form class="d-flex position-relative">
+                <input class="form-control form-control-luxury rounded-0" type="search" placeholder="City, country or postal code" aria-label="Search">
+                <button class="btn btn-warning rounded-0 px-4 fw-bold text-uppercase ls-1" type="submit">Search</button>
+            </form>
+            <div class="mt-3">
+                <a href="#" class="text-white small text-decoration-none"><svg class="bi me-1" width="12" height="12"><use xlink:href="#geo"></use></svg> Use my current location</a>
+            </div>
+        </div>
+      </section>
+
+      <!-- Store List Section -->
+      <section class="py-5">
+        <div class="container py-4">
+            <div class="d-flex justify-content-between align-items-end mb-5 reveal-up">
+                <div>
+                    <h2 class="font-serif text-white mb-1">Prestige Locations</h2>
+                    <p class="text-secondary mb-0">Discover our flagship boutiques around the world.</p>
+                </div>
+                <a href="#" class="btn btn-outline-secondary btn-sm rounded-pill px-3">View Map</a>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                
+                <!-- Geneva -->
+                <div class="col reveal-up">
+                    <div class="card boutique-card rounded-4 overflow-hidden">
+                        <img src="img/16.jpg" class="boutique-img" alt="Geneva Store">
+                        <div class="card-body p-4">
+                            <h4 class="font-serif text-white mb-1">Geneva Salon</h4>
+                            <p class="text-warning small text-uppercase fw-bold mb-3">Flagship</p>
+                            <address class="text-secondary small mb-4">
+                                Rue du Rhône 39<br>
+                                1204 Geneva, Switzerland<br>
+                                <span class="d-block mt-2 text-white">+41 22 311 00 00</span>
+                            </address>
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-outline-light btn-sm rounded-pill">Get Directions</a>
+                                <a href="#" class="btn btn-link btn-sm text-secondary text-decoration-none">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New York -->
+                <div class="col reveal-up" style="transition-delay: 0.1s;">
+                    <div class="card boutique-card rounded-4 overflow-hidden">
+                        <img src="img/17.jpg" class="boutique-img" alt="New York Store">
+                        <div class="card-body p-4">
+                            <h4 class="font-serif text-white mb-1">Fifth Avenue</h4>
+                            <p class="text-secondary small text-uppercase fw-bold mb-3">New York</p>
+                            <address class="text-secondary small mb-4">
+                                665 5th Avenue<br>
+                                New York, NY 10022, USA<br>
+                                <span class="d-block mt-2 text-white">+1 212 758 7700</span>
+                            </address>
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-outline-light btn-sm rounded-pill">Get Directions</a>
+                                <a href="#" class="btn btn-link btn-sm text-secondary text-decoration-none">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tokyo -->
+                <div class="col reveal-up" style="transition-delay: 0.2s;">
+                    <div class="card boutique-card rounded-4 overflow-hidden">
+                        <img src="img/18.jpg" class="boutique-img" alt="Tokyo Store">
+                        <div class="card-body p-4">
+                            <h4 class="font-serif text-white mb-1">Ginza Tower</h4>
+                            <p class="text-secondary small text-uppercase fw-bold mb-3">Tokyo</p>
+                            <address class="text-secondary small mb-4">
+                                6-10-1 Ginza, Chuo City<br>
+                                Tokyo 104-0061, Japan<br>
+                                <span class="d-block mt-2 text-white">+81 3 3572 0000</span>
+                            </address>
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-outline-light btn-sm rounded-pill">Get Directions</a>
+                                <a href="#" class="btn btn-link btn-sm text-secondary text-decoration-none">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paris -->
+                <div class="col reveal-up">
+                    <div class="card boutique-card rounded-4 overflow-hidden">
+                        <img src="img/19.jpg" class="boutique-img" alt="Paris Store">
+                        <div class="card-body p-4">
+                            <h4 class="font-serif text-white mb-1">Vendôme</h4>
+                            <p class="text-secondary small text-uppercase fw-bold mb-3">Paris</p>
+                            <address class="text-secondary small mb-4">
+                                9 Place Vendôme<br>
+                                75001 Paris, France<br>
+                                <span class="d-block mt-2 text-white">+33 1 42 96 00 00</span>
+                            </address>
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-outline-light btn-sm rounded-pill">Get Directions</a>
+                                <a href="#" class="btn btn-link btn-sm text-secondary text-decoration-none">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dubai -->
+                <div class="col reveal-up" style="transition-delay: 0.1s;">
+                    <div class="card boutique-card rounded-4 overflow-hidden">
+                        <img src="img/20.jpg" class="boutique-img" alt="Dubai Store">
+                        <div class="card-body p-4">
+                            <h4 class="font-serif text-white mb-1">Dubai Mall</h4>
+                            <p class="text-secondary small text-uppercase fw-bold mb-3">Dubai</p>
+                            <address class="text-secondary small mb-4">
+                                Fashion Avenue, Ground Floor<br>
+                                Dubai, UAE<br>
+                                <span class="d-block mt-2 text-white">+971 4 330 0000</span>
+                            </address>
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-outline-light btn-sm rounded-pill">Get Directions</a>
+                                <a href="#" class="btn btn-link btn-sm text-secondary text-decoration-none">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- London -->
+                 <div class="col reveal-up" style="transition-delay: 0.2s;">
+                    <div class="card boutique-card rounded-4 overflow-hidden">
+                        <img src="img/21.jpg" class="boutique-img" alt="London Store">
+                        <div class="card-body p-4">
+                            <h4 class="font-serif text-white mb-1">Bond Street</h4>
+                            <p class="text-secondary small text-uppercase fw-bold mb-3">London</p>
+                            <address class="text-secondary small mb-4">
+                                16 New Bond Street<br>
+                                London W1S 3SU, UK<br>
+                                <span class="d-block mt-2 text-white">+44 20 7493 0000</span>
+                            </address>
+                            <div class="d-grid gap-2">
+                                <a href="#" class="btn btn-outline-light btn-sm rounded-pill">Get Directions</a>
+                                <a href="#" class="btn btn-link btn-sm text-secondary text-decoration-none">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+      </section>
+      
+      <!-- Appointment CTA -->
+      <section class="py-5 bg-dark-subtle bg-opacity-10 border-top border-secondary border-opacity-25">
+          <div class="container text-center py-4 reveal-up">
+              <h2 class="display-5 font-serif text-white mb-3">Official Retailers</h2>
+              <p class="lead text-secondary mb-4 mx-auto" style="max-width: 700px;">Only official Chrono retailers are allowed to sell and maintain a Chrono watch. With the necessary skills and technical know-how, they guarantee the authenticity of each and every part of your watch.</p>
+              <a href="#" class="btn btn-light rounded-0 px-5 py-3 text-uppercase fw-bold ls-1">Contact a Retailer</a>
+          </div>
+      </section>
+
+    </main>
+
+    <footer class="container py-5 border-top border-secondary border-opacity-25 mt-5">
+      <div class="row">
+        <div class="col-12 col-md">
+          <svg class="mb-2 text-rolex-green" width="30" height="30"><use xlink:href="#crown"></use></svg>
+          <small class="d-block mb-3 text-secondary">&copy; 2025 Chrono Watch Co.</small>
+        </div>
+        <div class="col-6 col-md">
+          <h5 class="text-white font-serif">Rolex Watches</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary text-decoration-none" href="new-models.html">New watches 2025</a></li>
+            <li><a class="link-secondary text-decoration-none" href="watches.html">Find your watch</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 class="text-white font-serif">World of Rolex</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary text-decoration-none" href="world-of.html">Sports</a></li>
+            <li><a class="link-secondary text-decoration-none" href="world-of.html">Arts and Culture</a></li>
+            <li><a class="link-secondary text-decoration-none" href="world-of.html">Science</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal-up').forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

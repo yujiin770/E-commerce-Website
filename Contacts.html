@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Us · Chrono</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="product.css" rel="stylesheet" />
+    <style>
+      :root { --chrono-primary: white; --chrono-secondary:#3f5591; --chrono-primary-hover: #324474; }
+      .text-chrono-primary { color: var(--chrono-primary) !important; }
+      .btn-chrono-primary { background-color: var(--chrono-secondary); border-color: var(--chrono-secondary); color: #fff; }
+      .btn-chrono-primary:hover { background-color: var(--chrono-primary-hover); border-color: var(--chrono-primary-hover); color: #fff; }
+      body { background-color: #050505; color: #f5f5ff; font-family: 'Inter', sans-serif; }
+      .font-serif { font-family: 'Playfair Display', serif; }
+      .ls-1 { letter-spacing: 1px; }
+      .contact-hero { position: relative; height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); background-color: #111; }
+      .map-container { position: relative; overflow: hidden; padding-top: 75%; border-radius: .25rem; border: 1px solid rgba(255,255,255,0.1); }
+      .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+      .form-control { background-color: #1a1a1a; border-color: rgba(255,255,255,0.1); }
+      .form-control:focus { background-color: #1a1a1a; border-color: var(--chrono-primary); box-shadow: 0 0 0 0.25rem rgba(63, 85, 145, 0.5); color: #fff; }
+      .reveal-up { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
+      .reveal-up.visible { opacity: 1; transform: translateY(0); }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md sticky-top border-bottom border-secondary" data-bs-theme="dark" style="background-color: rgba(5,5,5,0.95); backdrop-filter: blur(10px);">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/Chronosbg.png" alt="Chrono Logo" width="65" height="65" class="me-2">
+          <span class="fw-bold text-chrono-primary ls-1 font-serif">CHRONO'S ROYALE</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mx-auto text-uppercase small fw-semibold ls-1 align-items-center">
+            <li class="nav-item"><a class="nav-link px-3" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="watches.html">Watches</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="new-models.html">New Models</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link text-white active px-3" href="Contacts.html">Contact Us</a></li>
+          </ul>
+          <ul class="navbar-nav ms-auto text-uppercase small fw-semibold ls-1"><li class="nav-item"><a class="nav-link" href="login.html">Login</a></li></ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <header class="contact-hero">
+        <div class="container reveal-up">
+            <h5 class="text-uppercase text-chrono-primary ls-1 mb-3">Get in Touch</h5>
+            <h1 class="display-1 fw-bold text-white mb-4">Contact Us</h1>
+            <p class="lead text-white-50 fs-5">We are here to answer any questions you may have about our timepieces and services.</p>
+        </div>
+      </header>
+      <section class="py-5 my-5">
+        <div class="container">
+          <div class="row g-5">
+            <div class="col-lg-6 reveal-up">
+              <h2 class="display-5 font-serif text-white mb-4">Our Flagship Boutique</h2>
+              <p class="text-secondary fs-5">Visit us to experience the world of Chronos Royale in person.</p>
+              <div class="mb-4"><strong class="text-white">Address:</strong><br><p class="text-secondary mb-0">123 Luxury Avenue, Valenzuela, Metro Manila</p></div>
+              <div class="mb-4"><strong class="text-white">Phone:</strong><br><p class="text-secondary mb-0">09380984110</p></div>
+              <div class="mb-5"><strong class="text-white">Email:</strong><br><p class="text-secondary mb-0">yujinjae05@gmail.com</p></div>
+              <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123504.1481102931!2d120.9168051779932!3d14.717549842429618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b395561a8c2f%3A0x892451c09848e02!2sValenzuela%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1672613293024!5m2!1sen!2sph" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+            </div>
+            <div class="col-lg-6 reveal-up" style="transition-delay: 0.2s;">
+              <h2 class="display-5 font-serif text-white mb-4">Send a Message</h2>
+              <form>
+                <div class="mb-3"><label for="nameInput" class="form-label">Full Name</label><input type="text" class="form-control" id="nameInput" required></div>
+                <div class="mb-3"><label for="emailInput" class="form-label">Email Address</label><input type="email" class="form-control" id="emailInput" required></div>
+                <div class="mb-3"><label for="subjectInput" class="form-label">Subject</label><input type="text" class="form-control" id="subjectInput" required></div>
+                <div class="mb-4"><label for="messageTextarea" class="form-label">Message</label><textarea class="form-control" id="messageTextarea" rows="6" required></textarea></div>
+                <button type="submit" class="btn btn-chrono-primary rounded-pill px-5 py-3 text-uppercase fw-bold">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="container py-5 border-top border-secondary border-opacity-25 mt-5">
+       <div class="row">
+        <div class="col-12 col-md-4">
+          <img src="img/Chronosbg.png" alt="Chrono Logo" width="60" height="60" class="mb-3">
+          <small class="d-block mb-3 text-secondary">&copy; 2025 Chrono Watch Co.</small>
+        </div>
+        <div class="col-6 col-md-4">
+          <h5 class="text-white font-serif">Explore</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary text-decoration-none" href="new-models.html">New watches 2025</a></li>
+            <li><a class="link-secondary text-decoration-none" href="watches.html">Find your watch</a></li>
+            <li><a class="link-secondary text-decoration-none" href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <h5 class="text-white font-serif">Our Company</h5>
+          <ul class="list-unstyled text-small">
+             <li><a class="link-secondary text-decoration-none" href="contact.html">Contact Us</a></li>
+             <li><a class="link-secondary text-decoration-none" href="boutiques.html">Boutiques</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const observer = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal-up').forEach((el) => { observer.observe(el); });
+    </script>
+  </body>
+</html>

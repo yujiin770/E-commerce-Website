@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Collection · Chrono</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="product.css" rel="stylesheet" />
+    
+    <style>
+      :root {
+        --rolex-green: #3f5591;
+        --rolex-gray: #1d1d1d;
+        --chrono-primary: white;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #050505;
+        color: #f5f5f5;
+      }
+      .font-serif {
+        font-family: 'Playfair Display', serif;
+      }
+      .ls-1 { letter-spacing: 1px; }
+      
+      .video-hero-section {
+        position: relative;
+        height: 65vh; 
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .btn-chrono-primary {
+        background-color: var(--chrono-primary);
+        border-color: var(--chrono-primary);
+        color: #fff;
+      }
+      .btn-chrono-primary:hover {
+        background-color: var(--chrono-primary-hover);
+        border-color: var(--chrono-primary-hover);
+        color: #fff;
+      }
+
+  /* --- NEW: Style to justify the description text --- */
+      #modalWatchDescription {
+        text-align: justify;
+      }
+      .video-bg {
+        position: absolute;
+        top: 50%; left: 50%;
+        min-width: 100%; min-height: 100%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+        object-fit: cover;
+        opacity: 0.6;
+      }
+      .video-overlay {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.3), #050505);
+        z-index: 1;
+      }
+      .hero-content { z-index: 2; position: relative; }
+      
+      .watch-card {
+        background-color: var(--rolex-gray);
+        border: 1px solid rgba(255,255,255,0.05);
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+      .watch-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--rolex-green);
+      }
+      .watch-card-img {
+        height: 250px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: transform 0.5s ease;
+      }
+      .watch-card:hover .watch-card-img { transform: scale(1.05); }
+      
+      .filter-btn {
+        border-color: rgba(255,255,255,0.2);
+        color: rgba(255,255,255,0.7);
+        transition: all 0.3s ease;
+      }
+      .filter-btn:hover {
+        background-color: rgba(255,255,255,0.1);
+        color: #fff;
+      }
+      .filter-btn.active {
+        background-color: var(--rolex-green);
+        color: white;
+        border-color: var(--rolex-green);
+      }
+      .text-rolex-green { color: var(--rolex-green); }
+
+      /* Animation for filtering */
+      .fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+    </style>
+  </head>
+  <body>
+  
+
+      <!-- Navigation -->
+  <nav class="navbar navbar-expand-md sticky-top border-bottom border-secondary" data-bs-theme="dark" style="background-color: rgba(5,5,5,0.95); backdrop-filter: blur(10px);">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/Chronosbg.png" alt="Chrono Logo" width="65" height="65" class="me-2">
+          <span class="fw-bold text-chrono-primary ls-1 font-serif">CHRONO'S ROYALE</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mx-auto text-uppercase small fw-semibold ls-1 align-items-center">
+            <li class="nav-item"><a class="nav-link px-3" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-white active px-3" href="watches.html">Watches</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="new-models.html">New Models</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="Contacts.html">Contact Us</a></li>
+          </ul>
+          <ul class="navbar-nav ms-auto text-uppercase small fw-semibold ls-1"><li class="nav-item"><a class="nav-link" href="login.html">Login</a></li></ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="video-hero-section">
+        <video autoplay muted loop playsinline class="video-bg">
+          <source src="video/rolexbg.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="container text-center hero-content">
+          <h1 class="display-1 fw-bold text-white mb-2 font-serif">The Collection</h1>
+          <p class="lead text-white-50 fst-italic mb-4">Mastering the art of time.</p>
+          <a href="#catalog" class="btn btn-outline-light rounded-pill px-5 py-2 text-uppercase ls-1">Explore Models</a>
+        </div>
+      </section>
+
+ 
+
+     <div id="catalog" class="container py-5">
+    <!-- FILTER BUTTONS (UPDATED FOR BRANDS) -->
+    <div class="d-flex justify-content-center mb-5 overflow-auto">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-outline-secondary filter-btn active text-uppercase px-4" data-filter="all">All Brands</button>
+        <button type="button" class="btn btn-outline-secondary filter-btn text-uppercase px-4" data-filter="rolex">Rolex</button>
+        <button type="button" class="btn btn-outline-secondary filter-btn text-uppercase px-4" data-filter="patek">Patek Philippe</button>
+        <button type="button" class="btn btn-outline-secondary filter-btn text-uppercase px-4" data-filter="audemars">Audemars Piguet</button>
+      </div>
+    </div>
+
+    <!-- WATCH GRID (REBUILT WITH MODAL TRIGGERS) -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="watch-grid">
+      
+      <!-- === ROLEX WATCHES === -->
+      <div class="col watch-item" data-category="rolex">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden">
+          <div class="card-body text-center p-4">
+            <h3 class="card-title font-serif text-white">Submariner</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Oystersteel</p>
+            <div class="watch-card-img mb-3" style="background-image: url('img/1.png');"></div>
+            <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25">
+              <span class="text-white fw-bold">$9,100</span>
+              <button class="btn btn-sm btn-outline-light rounded-pill" 
+                      data-bs-toggle="modal" data-bs-target="#watchModal"
+                      data-watch-img="img/1.png"
+                      data-watch-name="Submariner"
+                      data-watch-material="Oystersteel"
+                      data-watch-price="$9,100"
+                      data-watch-desc="The Rolex Submariner is the quintessential divers' watch, a benchmark in its genre. It features a unidirectional rotatable bezel and solid-link Oyster bracelet, engineered for reliability and comfort deep below the waves.">
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Repeat for all other watches with unique data-* attributes -->
+      <div class="col watch-item" data-category="rolex">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">GMT-Master II</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Oystersteel</p><div class="watch-card-img mb-3" style="background-image: url('img/4.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">$10,700</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/4.png" data-watch-name="GMT-Master II" data-watch-material="Oystersteel" data-watch-price="$10,700" data-watch-desc="Designed for airborne adventurers, the GMT-Master II allows wearers to track multiple time zones simultaneously. Its robust functionality and instantly recognizable bezel make it a true icon of cosmopolitan life.">View Details</button></div></div></div>
+      </div>
+      <div class="col watch-item" data-category="rolex">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Day-Date 40</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">18 ct Gold</p><div class="watch-card-img mb-3" style="background-image: url('img/5.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">$38,500</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/5.png" data-watch-name="Day-Date 40" data-watch-material="18 ct Gold" data-watch-price="$38,500" data-watch-desc="Known as 'the presidents' watch', the Day-Date was the first wristwatch to display the date and day of the week spelt out in full in a window on the dial. It remains the ultimate symbol of prestige and success.">View Details</button></div></div></div>
+      </div>
+      <div class="col watch-item" data-category="rolex">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Daytona</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Platinum</p><div class="watch-card-img mb-3" style="background-image: url('img/14.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">Request</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/14.png" data-watch-name="Daytona" data-watch-material="Platinum" data-watch-price="Price on Request" data-watch-desc="The Cosmograph Daytona is inextricably linked to the world of motor racing. Its high-performance chronograph and tachymetric scale allow drivers to perfectly measure speeds up to 400 kilometres or miles per hour.">View Details</button></div></div></div>
+      </div>
+      <div class="col watch-item" data-category="rolex">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Sky-Dweller</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Yellow Gold</p><div class="watch-card-img mb-3" style="background-image: url('img/11.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">$48,000</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/11.png" data-watch-name="Sky-Dweller" data-watch-material="Yellow Gold" data-watch-price="$48,000" data-watch-desc="An elegant watch for world travellers, the Sky-Dweller features a dual time zone and an annual calendar. Its revolutionary Ring Command bezel allows for easy setting of the watch's functions.">View Details</button></div></div></div>
+      </div>
+      <div class="col watch-item" data-category="rolex">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Yacht-Master</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Titanium RLX</p><div class="watch-card-img mb-3" style="background-image: url('img/7.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">$14,050</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/7.png" data-watch-name="Yacht-Master" data-watch-material="Titanium RLX" data-watch-price="$14,050" data-watch-desc="The Yacht-Master is the watch of the open seas. Its bidirectional rotatable 60-minute graduated bezel allows sailors to calculate sailing time between two buoys, making it an indispensable tool for the competitive skipper.">View Details</button></div></div></div>
+      </div>
+      
+      <!-- === PATEK PHILIPPE WATCHES === -->
+      <div class="col watch-item" data-category="patek">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Nautilus</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Steel</p><div class="watch-card-img mb-3" style="background-image: url('img/patek/Patek-Nautilus.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">$35,000</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/patek/Patek-Nautilus.png" data-watch-name="Nautilus" data-watch-material="Steel" data-watch-price="$35,000" data-watch-desc="With the rounded octagonal shape of its bezel, the ingenious porthole construction of its case, and its horizontally embossed dial, the Nautilus has epitomized the elegant sports watch since 1976.">View Details</button></div></div></div>
+      </div>
+      <div class="col watch-item" data-category="patek">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Aquanaut</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Rose Gold</p><div class="watch-card-img mb-3" style="background-image: url('img/patek/patek-Aquanaut.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">$42,500</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/patek/patek-Aquanaut.png" data-watch-name="Aquanaut" data-watch-material="Rose Gold" data-watch-price="$42,500" data-watch-desc="The Aquanaut caused a sensation at its launch in 1997. It's a model of casual elegance that combines a youthful, modern style with the highest standards of watchmaking artistry.">View Details</button></div></div></div>
+      </div>
+      <div class="col watch-item" data-category="patek">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Calatrava</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">White Gold</p><div class="watch-card-img mb-3" style="background-image: url('img/patek/patek-Calatrava.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">$29,500</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/patek/patek-Calatrava.png" data-watch-name="Calatrava" data-watch-material="White Gold" data-watch-price="$29,500" data-watch-desc="The Calatrava is the very essence of the round wristwatch and one of the finest symbols of the Patek Philippe style. Supremely elegant, it charms each new generation of watch lovers with its timeless, understated perfection.">View Details</button></div></div></div>
+      </div>
+      <div class="col watch-item" data-category="patek">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Complications</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Platinum</p><div class="watch-card-img mb-3" style="background-image: url('img/patek/patek-complication.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">$98,000</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/patek/patek-complication.png" data-watch-name="Complications" data-watch-material="Platinum" data-watch-price="$98,000" data-watch-desc="Patek Philippe masters all horological complications and has twice in the 20th century built the world's most complicated portable timepiece. This model showcases the brand's expertise in a wearable work of art.">View Details</button></div></div></div>
+      </div>
+      <div class="col watch-item" data-category="patek">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Twenty~4</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Steel Diamonds</p><div class="watch-card-img mb-3" style="background-image: url('img/patek/patek-twenty-4.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">$15,800</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/patek/patek-twenty-4.png" data-watch-name="Twenty~4" data-watch-material="Steel Diamonds" data-watch-price="$15,800" data-watch-desc="The Twenty~4 is the perfect watch for the modern, active woman. It is the ideal companion for every moment of her life, combining feminine elegance with impeccable craftsmanship.">View Details</button></div></div></div>
+      </div>
+      <div class="col watch-item" data-category="patek">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Golden Ellipse</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Rose Gold</p><div class="watch-card-img mb-3" style="background-image: url('img/patek/patek-Golden-Ellipse.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">$36,200</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/patek/patek-Golden-Ellipse.png" data-watch-name="Golden Ellipse" data-watch-material="Rose Gold" data-watch-price="$36,200" data-watch-desc="With its distinctive elliptical case, the Golden Ellipse is a bold departure from traditional watch shapes. Its design is based on the 'golden section', a divine proportion that has fascinated thinkers for centuries.">View Details</button></div></div></div>
+      </div>
+      
+      <!-- === AUDEMARS PIGUET WATCHES === -->
+      <div class="col watch-item" data-category="audemars">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Royal Oak</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Stainless Steel</p><div class="watch-card-img mb-3" style="background-image: url('img/AP/Ap-Royaloak.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">$26,500</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/AP/Ap-Royaloak.png" data-watch-name="Royal Oak" data-watch-material="Stainless Steel" data-watch-price="$26,500" data-watch-desc="The Audemars Piguet Royal Oak is a true icon of watch design. Its revolutionary octagonal bezel, secured by eight hexagonal screws, and its integrated bracelet have been breaking the rules since 1972.">View Details</button></div></div></div>
+      </div>
+      <div class="col watch-item" data-category="audemars">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Royal Oak Offshore</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Black Ceramic</p><div class="watch-card-img mb-3" style="background-image: url('img/AP/Ap-RoyaloakOfsshore.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">$38,000</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/AP/Ap-RoyaloakOfsshore.png" data-watch-name="Royal Oak Offshore" data-watch-material="Black Ceramic" data-watch-price="$38,000" data-watch-desc="The Royal Oak Offshore is the more muscular and robust evolution of its predecessor. It is an extreme sports watch that pushes the boundaries of performance and design.">View Details</button></div></div></div>
+      </div>
+      <div class="col watch-item" data-category="audemars">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Code 11.59</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Pink Gold</p><div class="watch-card-img mb-3" style="background-image: url('img/AP/AP-Code-11.59.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">$32,000</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/AP/AP-Code-11.59.png" data-watch-name="Code 11.59" data-watch-material="Pink Gold" data-watch-price="$32,000" data-watch-desc="Code 11.59 by Audemars Piguet writes a new page in the manufacturer's history. Its unconventional design features an octagonal middlecase embedded within a round case, creating a modern and timeless aesthetic.">View Details</button></div></div></div>
+      </div>
+      <div class="col watch-item" data-category="audemars">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Perpetual Calendar</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Blue Ceramic</p><div class="watch-card-img mb-3" style="background-image: url('img/ap/AP-Perpetual-Calendar.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">Request</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/ap/AP-Perpetual-Calendar.png" data-watch-name="Perpetual Calendar" data-watch-material="Blue Ceramic" data-watch-price="Price on Request" data-watch-desc="A masterpiece of horological art, the Perpetual Calendar automatically accounts for the varying number of days in the month and leap years, requiring no manual adjustment until the year 2100.">View Details</button></div></div></div>
+      </div>
+      <div class="col watch-item" data-category="audemars">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Chronograph</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">Titanium</p><div class="watch-card-img mb-3" style="background-image: url('img/ap/AP-Cornograph.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">$41,000</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/ap/AP-Cornograph.png" data-watch-name="Chronograph" data-watch-material="Titanium" data-watch-price="$41,000" data-watch-desc="This selfwinding chronograph combines a lightweight titanium case with a bold, contemporary design. It is the perfect instrument for measuring short time intervals with ultimate precision.">View Details</button></div></div></div>
+      </div>
+      <div class="col watch-item" data-category="audemars">
+        <div class="card watch-card h-100 rounded-4 overflow-hidden"><div class="card-body text-center p-4"><h3 class="card-title font-serif text-white">Flying Tourbillon</h3><p class="card-text text-secondary small text-uppercase ls-1 mb-4">White Gold</p><div class="watch-card-img mb-3" style="background-image: url('img/AP/Ap-Flying-Tourbillon.png');"></div><div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top border-secondary border-opacity-25"><span class="text-white fw-bold">Request</span><button class="btn btn-sm btn-outline-light rounded-pill" data-bs-toggle="modal" data-bs-target="#watchModal" data-watch-img="img/AP/Ap-Flying-Tourbillon.png" data-watch-name="Flying Tourbillon" data-watch-material="White Gold" data-watch-price="Price on Request" data-watch-desc="The flying tourbillon, a complex and beautiful complication, appears to float weightlessly inside its carriage. This timepiece is a testament to Audemars Piguet's mastery of high horology.">View Details</button></div></div></div>
+      </div>
+
+    </div> 
+    <!-- End Grid -->
+</div>
+        
+        <div class="text-center mt-5">
+           <button class="btn btn-link text-white text-decoration-none text-uppercase ls-1">Load More Models <svg class="bi ms-1" width="16" height="16"><use xlink:href="#crown"></use></svg></button>
+        </div>
+      </div>
+    </main>
+
+    <div class="modal fade" id="watchModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title font-serif fs-3" id="modalWatchName">Watch Name</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-md-6 text-center">
+            <img src="" id="modalWatchImage" class="img-fluid" style="max-height: 400px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));" alt="Watch Image">
+          </div>
+          <div class="col-md-6 d-flex flex-column justify-content-center">
+            <p class="text-secondary text-uppercase ls-1 small" id="modalWatchMaterial">Material</p>
+            <p class="lead" id="modalWatchDescription">Watch description will appear here.</p>
+            <div class="mt-3">
+              <span class="fs-4 fw-bold" id="modalWatchPrice">$0.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-secondary justify-content-between">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="login.html" class="btn btn-primary">Buy Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer class="container py-5 border-top border-secondary border-opacity-25 mt-5">
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <img src="img/Chronosbg.png" alt="Chrono Logo" width="60" height="60" class="mb-3">
+          <small class="d-block mb-3 text-secondary">&copy; 2025 Chrono Watch Co. <br>All rights reserved.</small>
+        </div>
+        <div class="col-6 col-md-4">
+          <h5 class="text-white font-serif mb-3">Luxury Watches</h5>
+          <ul class="list-unstyled text-small">
+            <li class="mb-2"><a class="link-secondary text-decoration-none" href="new-models.html">New watches 2025</a></li>
+            <li class="mb-2"><a class="link-secondary text-decoration-none" href="watches.html">Find your watch</a></li>
+            <li class="mb-2"><a class="link-secondary text-decoration-none" href="configure.html">Configure your watch</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <h5 class="text-white font-serif mb-3">Services</h5>
+          <ul class="list-unstyled text-small">
+            <li class="mb-2"><a class="link-secondary text-decoration-none" href="#">Watch Care</a></li>
+            <li class="mb-2"><a class="link-secondary text-decoration-none" href="boutiques.html">Find a Boutique</a></li>
+            <li class="mb-2"><a class="link-secondary text-decoration-none" href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Filter Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('.filter-btn');
+        const watchItems = document.querySelectorAll('.watch-item');
+
+        buttons.forEach(button => {
+          button.addEventListener('click', function() {
+            // 1. Remove active class from all buttons
+            buttons.forEach(btn => btn.classList.remove('active'));
+            // 2. Add active class to clicked button
+            this.classList.add('active');
+
+            // 3. Get the filter value
+            const filterValue = this.getAttribute('data-filter');
+
+            // 4. Loop through items and show/hide
+            watchItems.forEach(item => {
+              // Hide initially to reset animation
+              item.classList.remove('fade-in');
+              
+              if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                // Show item
+                item.classList.remove('d-none');
+                // Trigger reflow to restart animation (optional)
+                void item.offsetWidth; 
+                item.classList.add('fade-in');
+              } else {
+                // Hide item
+                item.classList.add('d-none');
+              }
+            });
+          });
+        });
+      });
+    </script>
+
+    <script>
+  const watchModal = document.getElementById('watchModal');
+  watchModal.addEventListener('show.bs.modal', event => {
+    // Button that triggered the modal
+    const button = event.relatedTarget;
+
+    // Extract info from data-* attributes
+    const name = button.getAttribute('data-watch-name');
+    const material = button.getAttribute('data-watch-material');
+    const price = button.getAttribute('data-watch-price');
+    const imgSrc = button.getAttribute('data-watch-img');
+    const description = button.getAttribute('data-watch-desc');
+
+    // Update the modal's content
+    const modalName = watchModal.querySelector('#modalWatchName');
+    const modalMaterial = watchModal.querySelector('#modalWatchMaterial');
+    const modalPrice = watchModal.querySelector('#modalWatchPrice');
+    const modalImage = watchModal.querySelector('#modalWatchImage');
+    const modalDescription = watchModal.querySelector('#modalWatchDescription');
+
+    modalName.textContent = name;
+    modalMaterial.textContent = material;
+    modalPrice.textContent = price;
+    modalImage.src = imgSrc;
+    modalDescription.textContent = description;
+  });
+</script>
+  </body>
+</html>

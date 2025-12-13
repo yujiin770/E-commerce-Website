@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chrono · Perpetual Excellence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="product.css" rel="stylesheet" />
+    <style>
+    :root { --chrono-primary: #3f5591; }
+    
+    body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
+    
+    /* --- HERO CAROUSEL STYLES (CORRECTED) --- */
+    #heroCarousel {
+        /* FIX: Reverted to 'boxed' hero size */
+        height: 75vh;
+        min-height: 500px;
+        position: relative;
+        border-radius: 1rem; /* The border you wanted is back */
+        overflow: hidden; /* Keeps images inside the rounded border */
+    }
+    .carousel-inner, .carousel-item {
+        height: 100%;
+    }
+    .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .hero-overlay {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    .carousel-caption-custom {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }
+    
+    /* This is the guaranteed fix for WHITE ARROWS */
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        filter: brightness(0) invert(1) !important;
+    }
+    .carousel-control-prev, .carousel-control-next {
+        opacity: 0.6 !important;
+    }
+    .carousel-control-prev:hover, .carousel-control-next:hover {
+        opacity: 1 !important;
+    }
+    
+    /* --- THIS IS THE GUARANTEED FIX FOR WHITE INDICATORS --- */
+    .carousel-indicators [data-bs-target] {
+        background-color: #fff !important; /* Forces the dot to be white */
+        opacity: 0.5 !important; /* Forces the inactive opacity */
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        margin: 0 5px;
+    }
+    .carousel-indicators .active {
+        opacity: 1 !important; /* Forces the active dot to be fully visible */
+    }
+    /* --- END OF FIXES --- */
+    
+    /* Dynamic Layout Styles (Unchanged) */
+    .brand-section { padding: 100px 0; }
+    .brand-header { border-left: 3px solid var(--chrono-primary); padding-left: 1.5rem; }
+    .sticky-top-md { position: -webkit-sticky; position: sticky; top: 120px; align-self: flex-start; }
+    .watch-showcase-img { width: 100%; }
+    
+    .parallax-section {
+        position: relative;
+        height: 50vh;
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .parallax-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); }
+
+    @media (max-width: 991.98px) {
+        .parallax-section {
+            background-attachment: scroll;
+        }
+    }
+
+    .reveal-up { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
+    .reveal-up.visible { opacity: 1; transform: translateY(0); }
+    
+    /* Scroller styles (Unchanged) */
+    @keyframes scroll-infinite { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 7)); } }
+    .logo-scroller { width: 100%; overflow: hidden; padding: 50px 0; background-color: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent); mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent); }
+    .logo-scroller-track { display: flex; width: calc(250px * 16); animation: scroll-infinite 40s linear infinite; }
+    .logo-scroller:hover .logo-scroller-track { animation-play-state: paused; }
+    .brand-logo-slide { width: 350px; height: 70px; display: flex; align-items: center; justify-content: center; }
+    .brand-logo-slide img { max-height: 100%; max-width: 80%; filter: grayscale(1) opacity(0.6); transition: filter 0.3s ease; }
+    .brand-logo-slide:hover img { filter: none; }
+</style>
+  </head>
+  <body>
+   <nav class="navbar navbar-expand-md sticky-top border-bottom border-secondary" data-bs-theme="dark" style="background-color: rgba(5,5,5,0.95); backdrop-filter: blur(10px);">
+      <div class="container">
+        <!-- FIX: Updated brand to match screenshot -->
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="img/Chronosbg.png" alt="Chrono Logo" width="65" height="65" class="me-3">
+          <span class="fw-bold text-chrono-primary ls-1 font-serif">CHRONO'S ROYALE</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mx-auto text-uppercase small fw-semibold ls-1 align-items-center">
+            <li class="nav-item"><a class="nav-link text-white active px-3" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="watches.html">Watches</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="new-models.html">New Models</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="contact.html">Contact Us</a></li>
+          </ul>
+          <ul class="navbar-nav ms-auto text-uppercase small fw-semibold ls-1"><li class="nav-item"><a class="nav-link" href="login.html">Login</a></li></ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <!-- FIX: Removed the padded wrapper from the carousel -->
+       <div class="p-3 p-md-4">
+      <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="5"></button>
+          </div>
+          <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="2000"><img src="img/AP/AP1.png" alt="Royal Oak Watch"><div class="hero-overlay"></div><div class="carousel-caption-custom"><h1 class="display-3 fw-bold text-white mb-3" style="text-shadow: 0 2px 4px rgba(0,0,0,0.7);">The Art of Fusion</h1><h3 class="fw-normal text-white-50 mb-4 fst-italic" style="text-shadow: 0 2px 4px rgba(0,0,0,0.7);">Where innovation meets tradition.</h3><a class="btn btn-outline-light rounded-pill px-4 py-2 text-uppercase" href="new-models.html">Explore New Models</a></div></div>
+              <div class="carousel-item" data-bs-interval="2000"><img src="img/patek/Patek1.png" alt="Nautilus Watch"><div class="hero-overlay"></div><div class="carousel-caption-custom"><h1 class="display-3 fw-bold text-white mb-3" style="text-shadow: 0 2px 4px rgba(0,0,0,0.7);">A Legacy of Excellence</h1><h3 class="fw-normal text-white-50 mb-4 fst-italic" style="text-shadow: 0 2px 4px rgba(0,0,0,0.7);">Discover the heritage of Chronos Royale.</h3><a class="btn btn-outline-light rounded-pill px-4 py-2 text-uppercase" href="about.html">About Our Company</a></div></div>
+              <div class="carousel-item" data-bs-interval="2000"><img src="img/patek/Patek2.png" alt="Watch Collection"><div class="hero-overlay"></div><div class="carousel-caption-custom"><h1 class="display-3 fw-bold text-white mb-3" style="text-shadow: 0 2px 4px rgba(0,0,0,0.7);">The Finest Collection</h1><h3 class="fw-normal text-white-50 mb-4 fst-italic" style="text-shadow: 0 2px 4px rgba(0,0,0,0.7);">Explore timepieces that define a generation.</h3><a class="btn btn-outline-light rounded-pill px-4 py-2 text-uppercase" href="watches.html">View All Watches</a></div></div>
+              <div class="carousel-item" data-bs-interval="2000"><img src="img/rolex/Rolexbg1.png" alt="Watchmaker crafting a watch"><div class="hero-overlay"></div><div class="carousel-caption-custom"><h1 class="display-3 fw-bold text-white mb-3" style="text-shadow: 0 2px 4px rgba(0,0,0,0.7);">Timeless Craftsmanship</h1><h3 class="fw-normal text-white-50 mb-4 fst-italic" style="text-shadow: 0 2px 4px rgba(0,0,0,0.7);">Engineered for a lifetime of precision.</h3><a class="btn btn-outline-light rounded-pill px-4 py-2 text-uppercase" href="craftsmanship.html">Discover Our Process</a></div></div>
+              <div class="carousel-item" data-bs-interval="2000"><img src="img/rolex/Rolexbg2.png" alt="Interior of a luxury watch boutique"><div class="hero-overlay"></div><div class="carousel-caption-custom"><h1 class="display-3 fw-bold text-white mb-3" style="text-shadow: 0 2px 4px rgba(0,0,0,0.7);">An Exclusive Experience</h1><h3 class="fw-normal text-white-50 mb-4 fst-italic" style="text-shadow: 0 2px 4px rgba(0,0,0,0.7);">Visit our boutiques to discover more.</h3><a class="btn btn-outline-light rounded-pill px-4 py-2 text-uppercase" href="boutiques.html">Find a Boutique</a></div></div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></button>
+          <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></button>
+      </div>
+      </div>
+
+      <section class="logo-scroller">
+        <div class="logo-scroller-track">
+            <div class="brand-logo-slide"><img src="img/rolex/Rolex-Logo.png" alt="Rolex"></div>
+            <div class="brand-logo-slide"><img src="img/patek/patek-logo.png" alt="Patek Philippe"></div>
+            <div class="brand-logo-slide"><img src="img/AP/AP-logo.png" alt="Audemars Piguet"></div>
+            <div class="brand-logo-slide"><img src="img/rolex/Rolex-Logo.png" alt="Rolex"></div>
+            <div class="brand-logo-slide"><img src="img/Cartier/cartier-logo.png" alt="Cartier"></div>
+            <div class="brand-logo-slide"><img src="img/patek/patek-logo.png" alt="Patek Philippe"></div>
+            <div class="brand-logo-slide"><img src="img/AP/Audemars-Piguet-Logo.png" alt="Audemars Piguet"></div>
+            <div class="brand-logo-slide"><img src="img/patek/patek-logo.png" alt="Patek Philippe"></div>
+            <div class="brand-logo-slide"><img src="img/Cartier/cartier-logo.png" alt="Cartier"></div>
+            <div class="brand-logo-slide"><img src="img/rolex/Rolex-Logo.png" alt="Rolex"></div>
+            <div class="brand-logo-slide"><img src="img/patek/patek-logo.png" alt="Patek Philippe"></div>
+            <div class="brand-logo-slide"><img src="img/AP/Audemars-Piguet-Logo.png" alt="Audemars Piguet"></div>
+            <div class="brand-logo-slide"><img src="img/rolex/Rolex-Logo.png" alt="Rolex"></div>
+            <div class="brand-logo-slide"><img src="img/Cartier/cartier-logo.png" alt="Cartier"></div>
+            <div class="brand-logo-slide"><img src="img/patek/patek-logo.png" alt="Patek Philippe"></div>
+            <div class="brand-logo-slide"><img src="img/AP/Audemars-Piguet-Logo.png" alt="Audemars Piguet"></div>
+            <div class="brand-logo-slide"><img src="img/Cartier/cartier-logo.png" alt="Cartier"></div>
+        </div>
+      </section>
+
+      <div class="container text-center py-5 my-5 reveal-up">
+        <div class="row justify-content-center">
+          <div class="col-lg-8"><h2 class="display-5 font-serif mb-4">Perpetual Innovation</h2><p class="lead text-secondary">The new 2025 creations from the world's most revered Maisons breathe life into our perpetual quest for excellence.</p></div>
+        </div>
+      </div>
+       <section class="parallax-section" style="background-image: url('img/rolex/Rolexbg2.png');">
+        <div class="parallax-overlay"></div><div class="container position-relative reveal-up"><p class="text-uppercase ls-1 small text-white-50 mb-2">Up Next</p><h2 class="display-4 font-serif text-white">Rolex</h2></div>
+      </section>
+      <section class="brand-section" id="rolex-section">
+        <div class="container"><div class="row g-5"><div class="col-md-4"><div class="sticky-top-md reveal-up"><div class="brand-header mb-4"><h2 class="display-4 font-serif text-white">Rolex</h2><p class="text-secondary fs-5">A Symphony in Gold</p></div><p class="text-secondary">The 2025 Rolex collection is a masterclass in refinement. This year focuses on precious metals, introducing a breathtaking new Day-Date 40 with a slate ombré dial and a reimagined Cosmograph Daytona in 18 ct Everose gold.</p></div></div><div class="col-md-8"><img src="img/26.png" alt="New Rolex Day-Date" class="watch-showcase-img reveal-up"><img src="img/14.png" alt="New Rolex Daytona" class="watch-showcase-img reveal-up"></div></div></div>
+      </section>
+      <section class="parallax-section" style="background-image: url('img/patek/Patek1.png');">
+        <div class="parallax-overlay"></div><div class="container position-relative reveal-up"><p class="text-uppercase ls-1 small text-white-50 mb-2">Up Next</p><h2 class="display-4 font-serif text-white">Patek Philippe</h2></div>
+      </section>
+      <section class="brand-section bg-dark-subtle bg-opacity-10">
+        <div class="container"><div class="row g-5 flex-md-row-reverse"><div class="col-md-4"><div class="sticky-top-md reveal-up"><div class="brand-header mb-4"><h2 class="display-4 font-serif text-white">Patek Philippe</h2><p class="text-secondary fs-5">Horological Artistry</p></div><p class="text-secondary">Patek Philippe continues its legacy with the introduction of the new Nautilus Travel Time Chronograph in white gold. It is complemented by an exquisite new Calatrava for ladies, featuring a guilloched and lacquered dial that dances in the light.</p></div></div><div class="col-md-8"><img src="img/patek/patek-Calatrava.png" alt="New Patek Philippe Nautilus" class="watch-showcase-img reveal-up"><img src="img/patek/patek-complication.png" alt="New Patek Philippe Calatrava" class="watch-showcase-img reveal-up"></div></div></div>
+      </section>
+      <section class="parallax-section" style="background-image: url('img/AP/AP1.png');">
+        <div class="parallax-overlay"></div><div class="container position-relative reveal-up"><p class="text-uppercase ls-1 small text-white-50 mb-2">Up Next</p><h2 class="display-4 font-serif text-white">Audemars Piguet</h2></div>
+      </section>
+      <section class="brand-section">
+        <div class="container"><div class="row g-5"><div class="col-md-4"><div class="sticky-top-md reveal-up"><div class="brand-header mb-4"><h2 class="display-4 font-serif text-white">Audemars Piguet</h2><p class="text-secondary fs-5">Avant-Garde Design</p></div><p class="text-secondary">Audemars Piguet pushes boundaries with a new Royal Oak Perpetual Calendar crafted entirely from blue ceramic. The maison also unveils a striking Code 11.59 Selfwinding Chronograph with a smoked blue sunburst dial.</p></div></div><div class="col-md-8"><img src="img/ap/AP-Perpetual-Calendar.png" alt="New Audemars Piguet Royal Oak" class="watch-showcase-img reveal-up"><img src="img/ap/AP-Code-11.59.png" alt="New Audemars Piguet Code 11.59" class="watch-showcase-img reveal-up"></div></div></div>
+      </section>
+      <section class="parallax-section" style="background-image: url('img/Cartier/Cartier-BG.png');">
+  <div class="parallax-overlay"></div>
+  <div class="container position-relative reveal-up">
+    <p class="text-uppercase ls-1 small text-white-50 mb-2">Up Next</p>
+    <h2 class="display-4 font-serif text-white">Cartier</h2>
+  </div>
+</section>
+
+<section class="brand-section">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-md-4">
+        <div class="sticky-top-md reveal-up">
+          <div class="brand-header mb-4">
+            <h2 class="display-4 font-serif text-white">Cartier</h2>
+            <p class="text-secondary fs-5">Skeleton Hand Wind</p>
+          </div>
+
+          <p class="text-secondary">
+            Cartier blends fine watchmaking with artistic elegance through its iconic skeleton designs. 
+            The openworked movement highlights the maison’s mastery of form and mechanics, while preserving 
+            the refined identity seen in legendary collections such as Santos de Cartier.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <img src="img/Cartier/Cartier-Skeleton_Hand_WInd.png"
+             alt="Cartier Skeleton Hand Wind Watch"
+             class="watch-showcase-img reveal-up">
+
+        <img src="img/Cartier/Cartier-Santos-De-Cartier-Watch.png"
+             alt="Cartier Santos de Cartier Watch"
+             class="watch-showcase-img reveal-up">
+      </div>
+    </div>
+  </div>
+</section>
+    </main>
+     <footer class="container py-5 border-top border-secondary border-opacity-25 mt-5">
+       <div class="row">
+        <div class="col-12 col-md-4">
+          <img src="img/Chronosbg.png" alt="Chrono Logo" width="60" height="60" class="mb-3">
+          <small class="d-block mb-3 text-secondary">&copy; 2025 Chrono Watch Co.</small>
+        </div>
+        <div class="col-6 col-md-4">
+          <h5 class="text-white font-serif">Explore</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="link-secondary text-decoration-none" href="new-models.html">New watches 2025</a></li>
+            <li><a class="link-secondary text-decoration-none" href="watches.html">Find your watch</a></li>
+            <li><a class="link-secondary text-decoration-none" href="about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-4">
+          <h5 class="text-white font-serif">Our Company</h5>
+          <ul class="list-unstyled text-small">
+             <li><a class="link-secondary text-decoration-none" href="contact.html">Contact Us</a></li>
+             <li><a class="link-secondary text-decoration-none" href="boutiques.html">Boutiques</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const observer = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } }); }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal-up').forEach((el) => { observer.observe(el); });
+    </script>
+  </body>
+</html>
